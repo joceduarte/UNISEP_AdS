@@ -1,0 +1,14 @@
+contruir uma ap login com duas rotas 
+
+/ cadastro
+ body:{
+    nome:
+    usuario:
+    senha:
+ }
+RESPOSTA : (MSG : usuario cadastrao com sucesso!")
+ /login
+ body:{
+    usuario:"",
+    senha:
+ }
