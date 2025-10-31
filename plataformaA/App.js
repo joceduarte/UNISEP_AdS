@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   StyleSheet,
   Text,
@@ -7,19 +8,53 @@ import {
   View,
 } from "react-native";
 
+import { useState } from "react";
 import logo from "./assets/logo.png";
 
 export default function App() {
+  const [usuario, setUsuario] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erroMessage, setErroMessage] = useState("");
+
+  const validate = () => {
+    if (String(usuario).length < 11) {
+      setErroMessage("Usuario Invalido");
+    } else if (String(senha).length > 6) {
+      setErroMessage("Senha Invalido");
+    } else {
+      Alert.alert("Login realizado com sucesso!");
+    }
+  };
+
+  const handlerUser = (value) => {
+    setUsuario(value);
+    setErroMessage("");
+  };
+
+  const handlerSenha = (value) => {
+    setSenha(value);
+    setErroMessage("");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Image source={logo} style={styles.logo} />
-        <Text style={styles.title}>Welcome to the App!</Text>
+        <Text style={styles.title}> Bem Vindo Guampa Torta</Text>
+
+        <Text style={styles.error}>Informe o Usuario</Text>
+
+        {String(erroMessage).length > 0 ? (
+          <Text style={styles.error}>{erroMessage}</Text>
+        ) : null}
+
         <TextInput
           placeholder="Usuario"
           keyboardType="numeric"
           placeholderTextColor="#9aa0a6"
           style={styles.input}
+          onChangeText={(value) => handlerUser(value)}
+          value={usuario}
         />
         <TextInput
           placeholder="Senha"
@@ -27,7 +62,7 @@ export default function App() {
           secureTextEntry={true}
           placeholderTextColor="#9aa0a6"
         />
-        <TouchableOpacity style={styles.Button}>
+        <TouchableOpacity style={styles.Button} onPress={validate}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
@@ -113,5 +148,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     color: "#9aa0",
     fontSize: 14,
+  },
+  error: {
+    color: "#c8003c",
+    textAlign: "center",
+    marginBottom: 8,
   },
 });
