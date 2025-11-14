@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Alert,
   Image,
   StyleSheet,
   Text,
@@ -10,7 +9,7 @@ import {
 } from "react-native";
 import logo from "../assets/logo.png";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [erroMessage, setErroMessage] = useState("");
@@ -28,7 +27,8 @@ export default function Login() {
     } else if (String(senha).length < 6) {
       setErroMessage("Senha inválida");
     } else {
-      Alert.alert("Login realizado com sucesso!");
+      //Alert.alert("Login realizado com sucesso!");
+      navigation.navigate("perfil");
     }
   };
 
