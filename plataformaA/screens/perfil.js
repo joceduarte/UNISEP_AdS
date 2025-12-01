@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import perfil from "../assets/joce.jpeg";
 
 export default function Perfil({ navigation }) {
@@ -13,6 +13,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.conteudo}>
         <Text style={styles.titulo}>Meu Desempenho</Text>
+
         <View style={styles.card}>
           <Ionicons name="book-outline" size={30} color={"#0f62fe"} />
           <View style={{ marginLeft: 12 }}>
@@ -20,6 +21,15 @@ export default function Perfil({ navigation }) {
             <Text styles={styles.cardValor}>4</Text>
           </View>
         </View>
+
+        {/* BOTÃO NOVO */}
+        <TouchableOpacity
+          style={styles.botao}
+          onPress={() => navigation.navigate("Notas")}
+        >
+          <Ionicons name="school-outline" size={22} color="#fff" />
+          <Text style={styles.botaoTexto}>Ver Minhas Notas</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -66,10 +76,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 15,
     flexDirection: "row",
-    alignItems: " center",
+    alignItems: "center",
     padding: 15,
     marginBottom: 15,
-    flex: 0.48,
   },
   cardTitulo: {
     fontSize: 14,
@@ -78,5 +87,22 @@ const styles = StyleSheet.create({
   cardValor: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+
+  // BOTÃO ESTILO
+  botao: {
+    backgroundColor: "#c8003c",
+    paddingVertical: 14,
+    borderRadius: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+  },
+  botaoTexto: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 10,
   },
 });

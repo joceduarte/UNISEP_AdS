@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Login from "./screens/login";
+import Notas from "./screens/nota";
 import Perfil from "./screens/perfil";
 
 const Stack = createNativeStackNavigator();
@@ -19,6 +20,12 @@ export default function App() {
         <Stack.Screen
           name="Perfil"
           component={Perfil}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Notas"
+          component={Notas}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

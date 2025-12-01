@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View  iew style={styles.container}>
       <View style={styles.card}>
         <Image source={logo} style={styles.logo} />
         <Text style={styles.title}>Bem-vindo Guampa Torta</Text>
